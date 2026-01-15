@@ -131563,6 +131563,13 @@ function egn(e, t) {
   }), [e, t]), i = Xyn(n);
   return (r = i == null ? void 0 : i[0]) == null ? void 0 : r.value;
 }
+if (!ne.useId) {
+  let e = 0;
+  ne.useId = () => {
+    const [t] = ne.useState(() => `gw-id-${e++}`);
+    return t;
+  };
+}
 export {
   U1n as Chart,
   pQe as ColorConfigToCSS,

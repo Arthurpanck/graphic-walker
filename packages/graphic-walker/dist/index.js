@@ -1,3 +1,12 @@
+import * as React from 'react';
+// Polyfill for React.useId (React 18 feature) for React 17 compatibility
+if (!React.useId) {
+    let count = 0;
+    React.useId = () => {
+        const [id] = React.useState(() => `gw-id-${count++}`);
+        return id;
+    };
+}
 export * from './root';
 export { default as PureRenderer } from './renderer/pureRenderer';
 export { embedGraphicWalker, embedGraphicRenderer, embedPureRenderer, embedTableWalker } from './vanilla';
