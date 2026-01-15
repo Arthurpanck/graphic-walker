@@ -1,3 +1,14 @@
+import * as React from 'react';
+
+// Polyfill for React.useId (React 18 feature) for React 17 compatibility
+if (!(React as any).useId) {
+    let count = 0;
+    (React as any).useId = () => {
+        const [id] = React.useState(() => `gw-id-${count++}`);
+        return id;
+    };
+}
+
 export * from './root';
 export { default as PureRenderer } from './renderer/pureRenderer';
 export type { ILocalPureRendererProps, IRemotePureRendererProps } from './renderer/pureRenderer';
