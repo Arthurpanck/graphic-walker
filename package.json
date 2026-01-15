@@ -1,10 +1,27 @@
 {
-  "name": "graphic-walker-home",
-  "version": "1.0.0",
-  "description": "![](https://img.shields.io/github/license/kanaries/graphic-walker) ![](https://img.shields.io/npm/v/@kanaries/graphic-walker) ![](https://img.shields.io/github/workflow/status/kanaries/graphic-walker/auto-build.yml)",
+  "name": "graphic-walker-monorepo",
+  "version": "0.4.77",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {},
+  "description": "Graphic Walker - Open source alternative to Tableau",
+  "license": "Apache-2.0",
+  "main": "./packages/graphic-walker/dist/graphic-walker.umd.js",
+  "module": "./packages/graphic-walker/dist/graphic-walker.es.js",
+  "types": "./packages/graphic-walker/dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./packages/graphic-walker/dist/graphic-walker.es.js",
+      "require": "./packages/graphic-walker/dist/graphic-walker.umd.js",
+      "types": "./packages/graphic-walker/dist/index.d.ts"
+    },
+    "./dist/style.css": {
+      "import": "./packages/graphic-walker/dist/style.css",
+      "require": "./packages/graphic-walker/dist/style.css"
+    },
+    "./*": {
+      "import": "./packages/graphic-walker/dist/*.js",
+      "types": "./packages/graphic-walker/dist/*.d.ts"
+    }
+  },
   "scripts": {
     "build": "yarn workspace @kanaries/graphic-walker build",
     "deploy": "yarn workspace playground deploy"
@@ -14,20 +31,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kanaries/graphic-walker.git"
+    "url": "git+https://github.com/Arthurpanck/graphic-walker.git"
   },
   "keywords": ["visualization", "EDA", "data-analysis"],
   "author": "Kanaries Data Inc.",
-  "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/Kanaries/graphic-walker/issues"
+    "url": "https://github.com/Arthurpanck/graphic-walker/issues"
   },
   "resolutions": {
-    "@types/react": "^18.x",
-    "@types/react-dom": "^18.x"
+    "@types/react": "^17.x",
+    "@types/react-dom": "^17.x"
   },
-  "homepage": "https://github.com/Kanaries/graphic-walker#readme",
+  "homepage": "https://github.com/Arthurpanck/graphic-walker#readme",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=16.0.0"
   }
 }

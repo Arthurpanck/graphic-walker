@@ -655,7 +655,10 @@ const VisualSettings: React.FC<IVisualSettings> = ({ rendererHandler, csvHandler
             },
         ].filter(Boolean) as ToolbarItemProps[];
 
-        const items = omitRedundantSeparator(builtInItems.filter((item) => typeof item === 'string' || !exclude.includes(item.key)));
+        // Default exclusions for cleaner UI
+        const defaultExclude = ['axes_resize', 'scale', 'coord_system', 'debug', 'limit_axis', 'transpose', 'kanaries'];
+        const allExclusions = [...defaultExclude, ...exclude];
+        const items = omitRedundantSeparator(builtInItems.filter((item) => typeof item === 'string' || !allExclusions.includes(item.key)));
 
         switch (vizStore.config.geoms[0]) {
             case 'table':
